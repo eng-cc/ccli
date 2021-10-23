@@ -1,7 +1,7 @@
 .idea
 *.iml
 prod
-# dist
+dist
 node_modules
 nm-*
 .DS_Store
