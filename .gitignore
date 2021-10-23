@@ -1,0 +1,18 @@
+.idea
+*.iml
+prod
+# dist
+node_modules
+nm-*
+.DS_Store
+.vscode
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.cache-loader
+bundle-config.json
+vendor-manifest.json
+.history
+.VSCodeCounter

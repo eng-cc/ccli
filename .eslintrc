@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+
+  "rules": {
+    // 缩进
+    "indent": "off",
+    "@typescript-eslint/indent": ["off"],
+
+    // 函数返回值类型必须被显式定义
+    // 暂时禁用
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    // 允许使用 @ts-expect-error 但需要写明原因
+    "@typescript-eslint/ban-ts-comment": "error"
+  }
+}
