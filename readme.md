@@ -1,5 +1,12 @@
 ## cc cli
 
+#### use
+
+```bash
+npm i @sccode/cli -g 
+ccli --help
+```
+
 #### test
 
 ```bash
