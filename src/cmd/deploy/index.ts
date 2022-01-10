@@ -4,6 +4,7 @@ import { getCcliState } from '../../cmd/config';
 import { resolve } from 'path';
 import { OSSLib } from './lib/oss-lib';
 export const deployCmd = async (target: string, dir?: string) => {
+  const cwd = process.cwd();
   const { aliyun, OSS: ossConfig } = getCcliState();
   if (!aliyun?.AccessKey || !aliyun?.AccessKeySecret || !ossConfig?.region) {
     console.log(red('plase config ccli by run: `ccli config`'));
@@ -21,9 +22,8 @@ export const deployCmd = async (target: string, dir?: string) => {
     timeout: 1000 * 60,
   });
   if (!dir) {
-    dir = resolve(__dirname, '../dist');
+    dir = resolve(cwd, './dist');
   }
   const osslib = new OSSLib(client);
   osslib.uploadFiles({ baseDir: dir });
-
 };

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { cac } from 'cac';
 import chalk from 'chalk';
 import { configCmd } from './cmd/config';
