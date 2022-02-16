@@ -8,12 +8,13 @@ const cli = cac('ccli');
 
 cli
   .command('deploy [target]')
-  .option('--dir', `[string] static source dir`)
-  .option('--env', `[string] target dir`)
+  .option('--dir <path>', `[string] static source dir`)
+  .option('--env <name>', `[string] target dir`)
   .action(async (target: string, options: { dir?: string; env?: string }) => {
     const { deployCmd } = await import('./cmd/deploy/index');
     try {
-      await deployCmd(target, options.dir);
+      console.log(options)
+      await deployCmd(target, {dir: options.dir, env: options.env});
     } catch (e: any) {
       createLogger('info').error(
         chalk.red(`error when deploy deps:\n${e.stack}`),
@@ -23,7 +24,7 @@ cli
     }
   });
 
-cli.command('config [mode]').action(async (mode: 'reset' | undefined) => {
+cli.command('config [mode], reset or undefined').action(async (mode: 'reset' | undefined) => {
   try {
     await configCmd(mode === 'reset');
   } catch (e: any) {

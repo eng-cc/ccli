@@ -6,6 +6,7 @@ export interface deployQueryInterface {
 // 遍历文件选项
 export interface generateFilePathOptionInterface {
   baseDir: string;
+  namespace?: string;
   exclude?: string[];
 }
 

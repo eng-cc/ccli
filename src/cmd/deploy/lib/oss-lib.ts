@@ -15,12 +15,15 @@ export class OSSLib {
     options: generateFilePathOptionInterface,
   ): Promise<uploadResultInterface> => {
     const pathArr = generateFilePath(options);
-    console.log(pathArr.length);
+    console.log('to deploy', pathArr.length, 'files');
     const fileArr = pathArr.map((path) => path.split(options.baseDir + '/')[1]);
     for (let i = pathArr.length - 1; i >= 0; i--) {
       const path = pathArr[i];
-      const filename = fileArr[i];
-      console.log(filename);
+      let filename = fileArr[i];
+      if (options.namespace) {
+        filename = `${options.namespace}/${filename}`;
+      }
+      console.log('uploading', filename);
       const result = await this.uploadFile(filename, path);
       if (!result.succ) {
         console.warn('error');
